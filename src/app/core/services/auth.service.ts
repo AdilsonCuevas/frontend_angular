@@ -17,7 +17,7 @@ export class AuthService {
     private usuarioSubject: BehaviorSubject<Usuario | null> = new BehaviorSubject<Usuario | null>(null);
     public usuario$: Observable<Usuario | null> = this.usuarioSubject.asObservable();
 
-    private apiUrl = 'http://localhost:4000'; // cambia con tu backend
+    private apiUrl = 'https://backendmongoose-production.up.railway.app'; // cambia con tu backend
 
     constructor(
         private http: HttpClient,
