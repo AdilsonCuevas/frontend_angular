@@ -1,0 +1,107 @@
+.main-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: linear-gradient(120deg, #365c8a, #4a90e2);
+    color: #fff;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: rgba(0, 0, 0, 0.3);
+
+    h1 {
+        margin: 0;
+        font-size: 1.5rem;
+    }
+
+    .nav a {
+        margin-left: 1rem;
+        color: #fff;
+        text-decoration: none;
+        font-weight: 500;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+.content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    text-align: center;
+
+    .intro {
+        max-width: 600px;
+        margin-bottom: 3rem;
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+
+            .btn {
+                padding: 0.8rem 1.5rem;
+                border-radius: 0.5rem;
+                background: #fff;
+                color: #365c8a;
+                font-weight: bold;
+                text-decoration: none;
+                transition: all 0.3s;
+
+                &:hover {
+                    background: #ddd;
+                }
+
+                &.secondary {
+                    background: transparent;
+                    border: 2px solid #fff;
+                    color: #fff;
+
+                    &:hover {
+                        background: #fff;
+                        color: #365c8a;
+                    }
+                }
+            }
+        }
+    }
+
+    .developer {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 1.5rem;
+        border-radius: 1rem;
+        max-width: 400px;
+
+        h3 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            text-decoration: underline;
+        }
+    }
+}
+
+.footer {
+    text-align: center;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.4);
+    font-size: 0.9rem;
+}

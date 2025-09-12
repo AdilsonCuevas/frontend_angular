@@ -1,0 +1,35 @@
+<div class="main-container">
+    <header class="header">
+        <h1>{{ empresa }}</h1>
+        <nav class="nav">
+            <a routerLink="/auth/login">Login</a>
+            <a routerLink="/auth/register">Register</a>
+        </nav>
+    </header>
+
+    <main class="content">
+        <section class="intro">
+            <h2>Bienvenido a {{ empresa }}</h2>
+            <p>
+                Este sistema ha sido desarrollado para brindar seguridad y
+                facilidad en la autenticación de usuarios. Accede con tu cuenta
+                o crea una nueva para continuar.
+            </p>
+            <div class="buttons">
+                <a routerLink="/auth/login" class="btn">Iniciar Sesión</a>
+                <a routerLink="/auth/register" class="btn secondary">Registrarse</a>
+            </div>
+        </section>
+
+        <section class="developer">
+            <h3>Desarrollador</h3>
+            <p><strong>{{ desarrollador.nombre }}</strong></p>
+            <p>{{ desarrollador.rol }}</p>
+            <p>📧 {{ desarrollador.contacto }}</p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 {{ empresa }} - Todos los derechos reservados</p>
+    </footer>
+</div>

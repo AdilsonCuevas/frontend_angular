@@ -1,0 +1,33 @@
+<div class="container">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form">
+        <h2>Registro de Usuario</h2>
+
+        <input type="text" placeholder="Nombre completo" formControlName="name" />
+        <div *ngIf="form.get('name')?.invalid && form.get('name')?.touched" class="error">
+            El nombre es obligatorio y debe tener al menos 3 caracteres.
+        </div>
+
+        <input type="email" placeholder="Correo electrónico" formControlName="email" />
+        <div *ngIf="form.get('email')?.invalid && form.get('email')?.touched" class="error">
+            Ingresa un correo válido.
+        </div>
+
+        <input type="password" placeholder="Contraseña" formControlName="password" />
+        <div *ngIf="form.get('password')?.invalid && form.get('password')?.touched" class="error">
+            La contraseña debe tener al menos 6 caracteres.
+        </div>
+
+        <select formControlName="role">
+            <option *ngFor="let r of roles" [value]="r">{{ r }}</option>
+        </select>
+
+        <input type="text" placeholder="URL del Avatar (opcional)" formControlName="avatar" />
+
+        <button type="submit" [disabled]="form.invalid">Registrarse</button>
+
+        <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+        <p *ngIf="successMessage" class="success">{{ successMessage }}</p>
+
+        <a routerLink="/auth/login">¿Ya tienes cuenta? Inicia sesión</a>
+    </form>
+</div>
