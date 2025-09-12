@@ -1,0 +1,31 @@
+.layout-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 200px;
+    background: #365c8a;
+    color: white;
+    padding: 1rem;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar li {
+    margin: 1rem 0;
+}
+
+.sidebar a {
+    color: rgb(63, 146, 241);
+    text-decoration: none;
+}
+
+.content {
+    flex: 1;
+    padding: 2rem;
+    background: #61bfe4;
+}

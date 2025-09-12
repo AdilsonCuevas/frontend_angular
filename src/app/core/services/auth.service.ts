@@ -1,27 +1,25 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { tap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({
+    providedIn: 'root'
+})
 export class AuthService {
-    private apiUrl = 'http://localhost:3000/api/auth'; // cambia con tu backend
+    private apiUrl = 'http://localhost:4000'; // cambia con tu backend
 
-    constructor(private http: HttpClient, private router: Router) { }
+    constructor(
+        private http: HttpClient,
+        private router: Router) { }
 
     register(data: any) {
-        return this.http.post(`${this.apiUrl}/register`, data);
+        return this.http.post(`${this.apiUrl}/auth/register`, data);
     }
 
     login(data: any) {
-        return this.http.post<{ token: string }>(`${this.apiUrl}/login`, data).pipe(
-            tap(res => {
-                if (res.token) {
-                    localStorage.setItem('token', res.token);
-                    this.router.navigate(['/profile']);
-                }
-            })
-        );
+        return this.http.post<{ backendTokens: any; }>(`${this.apiUrl}/auth/login`, data);
     }
 
     isAuthenticated(): boolean {
@@ -30,6 +28,30 @@ export class AuthService {
 
     logout() {
         localStorage.removeItem('token');
-        this.router.navigate(['/login']);
+        this.router.navigate(['/auth/login']);
+    }
+
+    getUser(id: string): Observable<any> {
+        const token = localStorage.getItem('token') || '';
+        const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+        return this.http.get(`${this.apiUrl}/users/${id}`, { headers });
+    }
+
+    createUser(data: any): Observable<any> {
+        const token = localStorage.getItem('token') || '';
+        const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+        return this.http.post(`${this.apiUrl}/users`, data, { headers });
+    }
+
+    updateUser(id: string, data: any): Observable<any> {
+        const token = localStorage.getItem('token') || '';
+        const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+        return this.http.put(`${this.apiUrl}/users${id}`, data, { headers });
+    }
+
+    getUseres() {
+        const token = localStorage.getItem('token') || '';
+        const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+        return this.http.get(`${this.apiUrl}/users`, { headers });
     }
 }

@@ -1,0 +1,41 @@
+<h2>{{ userId ? 'Editar Usuario' : 'Crear Usuario' }}</h2>
+
+<form [formGroup]="form" (ngSubmit)="save()">
+    <label>
+        Nombre:
+        <input formControlName="name" />
+    </label>
+    <div *ngIf="form.get('name')?.invalid && form.get('name')?.touched">
+        Nombre requerido
+    </div>
+
+    <label>
+        Email:
+        <input formControlName="email" />
+    </label>
+    <div *ngIf="form.get('email')?.invalid && form.get('email')?.touched">
+        Email inválido
+    </div>
+
+    <label>
+        Contraseña:
+        <input type="password" formControlName="password" />
+    </label>
+    <div *ngIf="form.get('password')?.invalid && form.get('password')?.touched">
+        Contraseña requerida
+    </div>
+
+    <label>
+        Rol:
+        <select formControlName="role">
+            <option *ngFor="let role of roles" [value]="role">{{ role }}</option>
+        </select>
+    </label>
+
+    <label>
+        Avatar (URL):
+        <input formControlName="avatar" />
+    </label>
+
+    <button type="submit" [disabled]="form.invalid">Guardar</button>
+</form>

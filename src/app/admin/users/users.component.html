@@ -1,0 +1,16 @@
+<h2>Usuarios Registrados</h2>
+<button routerLink="/admin/users/new">Crear Usuario</button>
+
+<div class="users-container">
+    <div class="user-card" *ngFor="let user of users">
+        <h3>{{ user.name }}</h3>
+        <p>Email: {{ user.email }}</p>
+        <p>Rol: {{ user.role }}</p>
+        <p>Creado: {{ user.createdAt | date:'short' }}</p>
+
+        <div class="actions">
+            <button [routerLink]="['/profile/users/edit', user.id]">Editar</button>
+            <!--<button (click)="deleteUser(user.id)">Eliminar</button>  -->
+        </div>
+    </div>
+</div>

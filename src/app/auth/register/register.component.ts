@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
-//import { AuthService } from '../../core/services/auth.service';
+import { AuthService } from '../../core/services/auth.service';
 import { CommonModule } from '@angular/common';
 
 export enum Roles {
@@ -24,7 +24,7 @@ export class RegisterComponent {
 
   constructor(
     private fb: FormBuilder,
-    //private auth: AuthService,
+    private auth: AuthService,
     private router: Router
   ) {
     this.form = this.fb.group({
@@ -38,15 +38,15 @@ export class RegisterComponent {
 
   onSubmit() {
     if (this.form.valid) {
-      /*this.auth.register(this.form.value).subscribe({
+      this.auth.register(this.form.value).subscribe({
         next: () => {
           this.successMessage = 'Registro exitoso, redirigiendo...';
-          setTimeout(() => this.router.navigate(['/login']), 1500);
+          setTimeout(() => this.router.navigate(['/auth/login']), 1500);
         },
         error: () => {
           this.errorMessage = 'Error al registrar usuario';
         },
-      }); */
+      });
     }
   }
 }

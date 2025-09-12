@@ -9,7 +9,7 @@ import { RouterModule } from '@angular/router';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
-  empresa = 'Vytium Media SAS';
+  empresa = 'Vyrtium Media SAS';
   desarrollador = {
     nombre: 'Adilson Cuevas',
     rol: 'Desarrollador Web Fullstack',
