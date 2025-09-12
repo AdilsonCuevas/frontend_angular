@@ -1,1 +1,61 @@
-<p>clientes-form works!</p>
+<h2 style="text-align: center;">{{ clienteId ? 'Editar Cliente' : 'Crear Cliente' }}</h2>
+
+<form [formGroup]="form" (ngSubmit)="save()" class="form-container">
+
+    <label>
+        Nombre:
+        <input formControlName="name" placeholder="Nombre completo" />
+    </label>
+    <div *ngIf="form.get('name')?.invalid && form.get('name')?.touched" class="error">
+        Nombre requerido
+    </div>
+
+    <label>
+        Email:
+        <input formControlName="email" placeholder="Email" />
+    </label>
+    <div *ngIf="form.get('email')?.invalid && form.get('email')?.touched" class="error">
+        Email inválido
+    </div>
+
+    <label>
+        NIT:
+        <input formControlName="nit" placeholder="NIT" />
+    </label>
+    <div *ngIf="form.get('nit')?.invalid && form.get('nit')?.touched" class="error">
+        NIT requerido
+    </div>
+
+    <label>
+        Dirección:
+        <input formControlName="direccion" placeholder="Dirección" />
+    </label>
+    <div *ngIf="form.get('direccion')?.invalid && form.get('direccion')?.touched" class="error">
+        Dirección requerida
+    </div>
+
+    <label>
+        Categoría:
+        <select formControlName="categoria">
+            <option value="">Selecciona categoría</option>
+            <option *ngFor="let cat of Categorias" [value]="cat">{{ cat }}</option>
+        </select>
+    </label>
+
+    <label>
+        Teléfono:
+        <input formControlName="telefono" type="number" placeholder="Teléfono" />
+    </label>
+
+    <label>
+        Usuario encargado:
+        <select formControlName="usuario">
+            <option value="">Selecciona un usuario</option>
+            <option *ngFor="let u of usuarios" [value]="u._id">
+                {{ u.name }}
+            </option>
+        </select>
+    </label>
+
+    <button type="submit" [disabled]="form.invalid">Guardar</button>
+</form>

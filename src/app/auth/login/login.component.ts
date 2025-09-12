@@ -4,6 +4,12 @@ import { AuthService } from '../../core/services/auth.service';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 
+interface Usuario {
+  name: string;
+  email: string;
+  role: 'admin' | 'lector';
+}
+
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -26,9 +32,8 @@ export class LoginComponent {
     if (this.form.valid) {
       this.auth.login(this.form.value).subscribe({
         next: (res) => {
-          console.log(res);
           if (res.backendTokens) {
-            localStorage.setItem('token', res.backendTokens);
+            localStorage.setItem('token', res.backendTokens.accessToken);
             console.log('Login exitoso');
             setTimeout(() => this.router.navigate(['/profile/users']), 1500);
           }

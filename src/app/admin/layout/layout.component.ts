@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../core/services/auth.service';
 import { RouterModule } from '@angular/router';
 
@@ -9,9 +9,14 @@ import { RouterModule } from '@angular/router';
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.css'
 })
-export class LayoutComponent {
+export class LayoutComponent implements OnInit {
+  nombre: string = '';
 
-  constructor(private auth: AuthService,) { }
+  constructor(private auth: AuthService) { }
+
+  ngOnInit() {
+    this.nombre = this.auth.getName();
+  }
 
   logout() {
     this.auth.logout();

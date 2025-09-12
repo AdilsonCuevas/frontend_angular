@@ -1,11 +1,16 @@
 <div class="layout-container">
-    <nav class="sidebar">
+    <nav class="topbar">
         <h2>Admin Panel</h2>
-        <ul>
+
+        <!-- Nombre del usuario centrado -->
+        <div class="usuario-nombre">
+            {{ nombre }}
+        </div>
+
+        <ul class="menu">
             <li><a routerLink="/profile/users">Usuarios Registrados</a></li>
             <li><a routerLink="/profile/clientes">Clientes</a></li>
             <li><button (click)="logout()">Logout</button></li>
         </ul>
     </nav>
-
 </div>

@@ -1,41 +1,41 @@
-<h2>{{ userId ? 'Editar Usuario' : 'Crear Usuario' }}</h2>
+<h2 style="text-align: center;">{{ userId ? 'Editar Usuario' : 'Crear Usuario' }}</h2>
 
-<form [formGroup]="form" (ngSubmit)="save()">
-    <label>
-        Nombre:
-        <input formControlName="name" />
-    </label>
-    <div *ngIf="form.get('name')?.invalid && form.get('name')?.touched">
-        Nombre requerido
+<form [formGroup]="form" (ngSubmit)="save()" class="user-form">
+    <div class="form-group">
+        <label>Nombre:</label>
+        <input formControlName="name" placeholder="Ingrese el nombre" />
+        <div class="error" *ngIf="form.get('name')?.invalid && form.get('name')?.touched">
+            Nombre requerido
+        </div>
     </div>
 
-    <label>
-        Email:
-        <input formControlName="email" />
-    </label>
-    <div *ngIf="form.get('email')?.invalid && form.get('email')?.touched">
-        Email inválido
+    <div class="form-group">
+        <label>Email:</label>
+        <input formControlName="email" placeholder="Ingrese el email" />
+        <div class="error" *ngIf="form.get('email')?.invalid && form.get('email')?.touched">
+            Email inválido
+        </div>
     </div>
 
-    <label>
-        Contraseña:
-        <input type="password" formControlName="password" />
-    </label>
-    <div *ngIf="form.get('password')?.invalid && form.get('password')?.touched">
-        Contraseña requerida
+    <div class="form-group">
+        <label>Contraseña:</label>
+        <input type="password" formControlName="password" placeholder="Ingrese la contraseña" />
+        <div class="error" *ngIf="form.get('password')?.invalid && form.get('password')?.touched">
+            Contraseña requerida
+        </div>
     </div>
 
-    <label>
-        Rol:
+    <div class="form-group">
+        <label>Rol:</label>
         <select formControlName="role">
             <option *ngFor="let role of roles" [value]="role">{{ role }}</option>
         </select>
-    </label>
+    </div>
 
-    <label>
-        Avatar (URL):
-        <input formControlName="avatar" />
-    </label>
+    <div class="form-group">
+        <label>Avatar (URL):</label>
+        <input formControlName="avatar" placeholder="URL del avatar" />
+    </div>
 
     <button type="submit" [disabled]="form.invalid">Guardar</button>
 </form>

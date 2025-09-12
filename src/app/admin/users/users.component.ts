@@ -17,14 +17,20 @@ export enum Roles {
 })
 export class UsersAComponent implements OnInit {
   users: any = [];
+  authService: any;
+  role: string = '';
+  userService: any;
 
   constructor(private auth: AuthService,) { }
 
   ngOnInit() {
+    this.role = this.auth.getRolUsuario();
     this.auth.getUseres().subscribe(user => {
       this.users = user;
     });
   }
+
+
 
   /*deleteUser(id: string) {
     if (!confirm('¿Estás seguro que deseas eliminar este usuario?')) return;

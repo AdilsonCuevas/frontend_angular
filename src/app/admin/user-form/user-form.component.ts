@@ -54,12 +54,12 @@ export class UserFormComponent implements OnInit {
     if (this.userId) {
       // Editar usuario
       this.auth.updateUser(this.userId, this.form.value).subscribe(() => {
-        this.router.navigate(['/admin/users']);
+        this.router.navigate(['/profile/users']);
       });
     } else {
       // Crear usuario
       this.auth.createUser(this.form.value).subscribe(() => {
-        this.router.navigate(['/admin/users']);
+        this.router.navigate(['/profile/users']);
       });
     }
   }

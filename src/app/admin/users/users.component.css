@@ -1,27 +1,99 @@
 .users-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 16px;
+    margin-top: 20px;
 }
 
+/* Tarjeta de usuario */
 .user-card {
-    background: white;
-    padding: 1rem;
-    border-radius: 5px;
-    box-shadow: 0px 0px 5px #ccc;
-    width: 200px;
+    background-color: #f9f9f9;
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.user-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Botones */
+button {
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 14px;
+    transition: background-color 0.2s;
+}
+
+.btn-create {
+    background-color: #365c8a;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.btn-create:hover {
+    background-color: #2d4970;
+}
+
+.btn-edit {
+    background-color: #f0ad4e;
+    color: white;
+    margin-right: 8px;
+}
+
+.btn-edit:hover {
+    background-color: #d9953d;
+}
+
+.btn-delete {
+    background-color: #d9534f;
+    color: white;
+}
+
+.btn-delete:hover {
+    background-color: #c12e2a;
+}
+
+/* Contenedor de acciones */
+.actions {
+    margin-top: 12px;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+/* Tipografía y responsividad */
+h2 {
+    font-size: 1.8rem;
+    color: #365c8a;
 }
 
 .user-card h3 {
     margin-top: 0;
+    margin-bottom: 8px;
+    color: #333;
 }
 
-.actions {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 1rem;
+p {
+    margin: 4px 0;
+    font-size: 0.9rem;
+    color: #555;
 }
 
-.actions button {
-    cursor: pointer;
+@media (max-width: 600px) {
+    .users-container {
+        grid-template-columns: 1fr;
+    }
+
+    button {
+        width: 100%;
+    }
 }
