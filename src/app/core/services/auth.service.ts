@@ -17,7 +17,7 @@ export class AuthService {
     private usuarioSubject: BehaviorSubject<Usuario | null> = new BehaviorSubject<Usuario | null>(null);
     public usuario$: Observable<Usuario | null> = this.usuarioSubject.asObservable();
 
-    private apiUrl = 'https://backend-mongoose-1wur.onrender.com'; // cambia con tu backend
+    private apiUrl = 'https://backend-mongoose-nu.vercel.app'; // cambia con tu backend
 
     constructor(
         private http: HttpClient,
